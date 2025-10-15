@@ -1,0 +1,14 @@
+{
+  "name": "test-task/map-api",
+  "description": "test map api",
+  "minimum-stability": "stable",
+  "license": "proprietary",
+  "autoload": {
+    "psr-4": {
+      "App\\": "src/"
+    }
+  },
+  "require": {
+    "ext-pdo": "*"
+  }
+}

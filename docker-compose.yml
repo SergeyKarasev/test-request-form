@@ -1,0 +1,29 @@
+services:
+  nginx:
+    image: nginx:latest
+    volumes:
+      - './nginx/conf.d:/etc/nginx/conf.d'
+      - './app:/var/www/html'
+    ports:
+      - '80:80'
+    depends_on:
+      - php
+  php:
+    build:
+      context: './php'
+      dockerfile: Dockerfile
+    volumes:
+      - './app:/var/www/html'
+  mysql:
+    image: mysql:8
+    restart: always
+    volumes:
+      - 'mysql:/var/lib/mysql'
+    environment:
+      MYSQL_DATABASE: application_form
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - '3306:3306'
+volumes:
+  mysql:
+    driver: local
